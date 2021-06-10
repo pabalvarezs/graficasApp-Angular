@@ -18,13 +18,16 @@ export class DonaHttpComponent implements OnInit {
     this.graficasService.getUsuariosRedesSociales()
       .subscribe( data => {
 
-        // console.log(data);
+        // const labels = Object.keys(data)
+        // const values = Object.values(data)
+        // this.doughnutChartLabels = labels;
+        // this.doughnutChartData.push(values);
+        this.graficasService.getUsuariosRedesSocialesDonaData()
+          .subscribe(({labels,values}) => {
+            this.doughnutChartLabels = labels;
+            this.doughnutChartData.push(values);
 
-        const labels = Object.keys(data)
-        const values = Object.values(data)
-        this.doughnutChartLabels = labels;
-        this.doughnutChartData.push(values);
-        
+          })
       })
   
   }
